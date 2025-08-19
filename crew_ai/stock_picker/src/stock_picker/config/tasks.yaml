@@ -1,0 +1,38 @@
+find_trending_company:
+  description: >
+    Find the top trending companies in the news within {sector} by searching the latest news. 
+    Only include companies that have not been found before.
+  role: >
+    Financial News Analyst that finds trending companies in {sector}
+  expected_output: >
+    A list of trending companies in {sector}.
+  agent: trending_company_finder
+  output_file: output/trending_companies.json
+
+research_trending_companies:
+  description: >
+    Given the list of trending companies, provide a detailed analysis of each company 
+    by searching online and compiling insights.
+  role: >
+    Senior Financial Researcher
+  expected_output: >
+    A report containing detailed analysis of each listed company.
+  agent: financial_researcher
+  context:
+    - find_trending_company
+  output_file: output/research.json
+
+pick_best_company:
+  description: >
+    Analyze the research findings and pick the best company for investment. 
+    Send a push notification to the user with the decision. 
+    Then respond with a detailed report explaining why the chosen company was selected 
+    and why the other companies were not.
+  role: >
+    Stock Picker from Research
+  expected_output: >
+    The chosen company, the reasons for selection, and the reasons for rejecting the other companies.
+  agent: stock_picker
+  context:
+    - research_trending_companies
+  output_file: output/decision.md

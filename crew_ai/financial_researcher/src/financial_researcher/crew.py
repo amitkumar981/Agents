@@ -16,7 +16,7 @@ class FinancialResearcher():
         return Agent(
             config=self.agents_config['researcher'],
             verbose=True,
-            tools=[SerperDevTool()]   # researcher gets the search tool
+            tools=[SerperDevTool()]   
         )
 
     @agent
