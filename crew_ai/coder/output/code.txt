@@ -1,0 +1,76 @@
+```python
+def fibonacci(n):
+    sequence = []
+    a, b = 0, 1
+    for _ in range(n):
+        sequence.append(a)
+        a, b = b, a + b
+    return sequence
+
+# Generate Fibonacci sequence up to the 50th term
+fib_sequence = fibonacci(50)
+
+# Save to a text file
+with open('fibonacci.txt', 'w') as f:
+    for num in fib_sequence:
+        f.write(f'{num}\n')
+
+# Verify the output by reading the file
+with open('fibonacci.txt', 'r') as f:
+    content = f.read()
+print(content)
+```
+
+When executed, this program generates the Fibonacci sequence up to the 50th term and saves it to 'fibonacci.txt'. The output is:
+```
+0
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+2584
+4181
+6765
+10946
+17711
+28657
+46368
+75025
+121393
+196418
+317811
+514229
+832040
+1346269
+2178309
+3524578
+5702887
+9227465
+14930352
+24157817
+39088169
+63245986
+102334155
+165580141
+267914296
+433494437
+701408733
+1134903170
+1836311903
+2971215073
+4807526976
+7778742049
+```
